@@ -16,10 +16,8 @@ public class Main {
         System.out.println(account1.getsecureIban());
         System.out.println(Arrays.toString(bankProcessing.getClients()));
         System.out.println(bankProcessing.secureToString()) ;
-        System.out.println(bankProcessing.getSumOfAllAccounts());
+        bankProcessing.printTotalBalance();
     }
     //Implement a simple bank app
 
-    //f. In the BankProcessing implement the method which
-    // returns the sum of all accounts balances.
 }

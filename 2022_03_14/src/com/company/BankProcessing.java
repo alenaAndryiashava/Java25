@@ -39,6 +39,9 @@ public class BankProcessing {
         }
         return sum;
     }
+    public void printTotalBalance(){
+        System.out.println("Total balance: " + getSumOfAllAccounts());
+    }
 }
 
 //c. Create BankProcessing class with an attribute Account[] bankAccounts.
