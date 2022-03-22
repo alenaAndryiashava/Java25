@@ -8,10 +8,10 @@ public class QAEngineer extends Employee{
 
     @Override
     public String toString() {
-        return "QAEngineer: "+"\n" + super.toString();
+        return "QAEngineer: " + "\n" + super.toString();
     }
 
     public void doWork(){
-        System.out.println("I am QA Engineer "+ getName()+ ", I check the program.");
+        System.out.println("I am QA Engineer " + getName() + ", I check the program.");
     }
 }

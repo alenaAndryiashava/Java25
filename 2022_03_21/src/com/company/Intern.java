@@ -7,6 +7,6 @@ public class Intern extends Employee{
 
     @Override
     public String toString() {
-        return "Intern: "+"\n" + super.toString();
+        return "Intern: " + "\n" + super.toString();
     }
 }

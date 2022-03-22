@@ -12,7 +12,7 @@ public class Manager extends Employee{
 
     @Override
     public String toString() {
-        return "Manager: " +"\n"+ super.toString() + "; bonus = " + bonus;
+        return "Manager: " + "\n" + super.toString() + "; bonus = " + bonus;
 
 
     }
