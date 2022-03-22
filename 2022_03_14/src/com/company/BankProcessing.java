@@ -17,8 +17,8 @@ public class BankProcessing {
 
     public String secureToString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < bankAccounts.length ; i++) {
-            stringBuilder.append(bankAccounts[i].secureToString());
+        for (Account bankAccount : bankAccounts) {
+            stringBuilder.append(bankAccount.secureToString());
         }
         return  "BankProcessing: " + '\n'+
                 "bankAccounts: " +'\n'+ stringBuilder.toString();

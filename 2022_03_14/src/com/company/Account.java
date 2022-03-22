@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Account {
     private String IBAN;
     private Person client;
@@ -40,9 +42,7 @@ public class Account {
         String prefix = IBAN.substring(0, 4);
         String postfix = IBAN.substring(IBAN.length()-3);
         char[] stars = new char[IBAN.length()-6];
-        for (int i = 0; i < stars.length; i++) {
-            stars[i] = '*';
-        }
+        Arrays.fill(stars, '*');
         return prefix + String.valueOf(stars) + postfix;
     }
 
