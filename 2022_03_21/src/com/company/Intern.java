@@ -9,4 +9,7 @@ public class Intern extends Employee{
     public String toString() {
         return "Intern: " + "\n" + super.toString();
     }
+    public void qwe(){
+        System.out.println("Qwe!!!");
+    }
 }

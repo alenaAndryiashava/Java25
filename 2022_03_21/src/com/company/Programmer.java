@@ -8,9 +8,10 @@ public class Programmer extends Employee{
 
     @Override
     public String toString() {
-        return "Programmer: " + "\n" + super.toString();
+        return "programmer: " + super.toString();
     }
 
+    @Override
     public void doWork(){
         System.out.println("I am programmer " + getName() + ", I write program.");
     }
