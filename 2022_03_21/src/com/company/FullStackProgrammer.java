@@ -9,4 +9,9 @@ public class FullStackProgrammer extends Programmer{
     public String toString() {
         return "FullStack " + super.toString();
     }
+
+    @Override
+    public void doWork() {
+
+    }
 }

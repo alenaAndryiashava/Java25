@@ -8,7 +8,7 @@ public class QAEngineer extends Employee{
 
     @Override
     public String toString() {
-        return "QAEngineer: " + "\n" + super.toString();
+        return "QAEngineer: " + super.toString();
     }
 
     public void doWork(){

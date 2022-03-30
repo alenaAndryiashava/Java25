@@ -4,9 +4,7 @@ public class FrontEndProgrammer extends Programmer{
 
     public FrontEndProgrammer(String name, double salary) {
         super(name, salary);
-
     }
-
     @Override
     public String toString() {
         return "FrontEnd " + super.toString();

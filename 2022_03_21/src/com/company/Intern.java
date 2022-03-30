@@ -9,6 +9,12 @@ public class Intern extends Employee{
     public String toString() {
         return "Intern: " + "\n" + super.toString();
     }
+
+    @Override
+    public void doWork() {
+
+    }
+
     public void qwe(){
         System.out.println("Qwe!!!");
     }
