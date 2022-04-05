@@ -43,12 +43,17 @@ public class Main {
         System.out.println("----Manager------");
         Manager manager1 = new Manager("SuperBoss", 5000, 1000);
 
+        manager1.getTeam().add(manager1);
         manager1.getTeam().add(qaEngineer1);
         manager1.getTeam().add(backEndProgrammer);
         manager1.getTeam().add(frontEndProgrammer);
         System.out.println(manager1.getTeam());
-        manager1.getTeam().remove(0);
+        manager1.getTeam().remove(1);
         System.out.println(manager1.getTeam());
+
+        System.out.println(manager1.getTeam().find(backEndProgrammer));
+        System.out.println(manager1.getTeam().find(qaEngineer2));
+
 
 
     }

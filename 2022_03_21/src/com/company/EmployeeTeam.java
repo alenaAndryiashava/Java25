@@ -6,7 +6,7 @@ import java.util.Arrays;
 // This class should have private field array of Employees and implements toString(),
 // add(Employee employee) method and remove(int index) method.
 public class EmployeeTeam {
-    private  int capacity = 5;
+    private int capacity = 5;
     private int currentIndex = 0;
     private Employee[] employees;
 
@@ -14,31 +14,40 @@ public class EmployeeTeam {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Team: \n");
-        for (int i = 0; i <currentIndex ; i++) {
+        for (int i = 0; i < currentIndex; i++) {
             stringBuilder.append(employees[i]).append("\n");
         }
 
         return stringBuilder.toString();
     }
 
-    public void add(Employee employee){
-        if(employees == null){
+    public void add(Employee employee) {
+        if (employees == null) {
             employees = new Employee[capacity];
             currentIndex = 0;
         }
-        if(currentIndex>=capacity){
-            capacity*=2;
-            employees = Arrays.copyOf(employees,capacity);
+        if (currentIndex >= capacity) {
+            capacity *= 2;
+            employees = Arrays.copyOf(employees, capacity);
         }
-        employees[currentIndex++]=employee;
+        employees[currentIndex++] = employee;
     }
 
-    public void remove(int index){
-        System.arraycopy(employees,index+1,employees,index,capacity-1-index);
+    public void remove(int index) {
+        System.arraycopy(employees, index + 1, employees, index, capacity - 1 - index);
         currentIndex--;
     }
 
     public Employee[] getTeam() {
         return employees;
     }
+    public int find(Employee employee) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (employees[i].equals(employee)) {
+                return i;
+            }
+        }
+       return -1;
+    }
 }
+

@@ -20,5 +20,6 @@ public class ArrayCopyDemo {
         System.out.println(arrayCopyDemo);
 
         Object object = new Object();
+
     }
 }
