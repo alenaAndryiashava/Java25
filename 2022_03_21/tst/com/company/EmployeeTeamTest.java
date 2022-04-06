@@ -8,7 +8,7 @@ class EmployeeTeamTest {
 
     @Test
     void add() {
-        EmployeeTeam employeeTeam = new EmployeeTeam();
+        EmployeeTeam employeeTeam = new EmployeeTeam(5);
         QAEngineer qaEngineer = new QAEngineer("Pavlov", 1200);
         BackEndProgrammer backEndProgrammer = new BackEndProgrammer("Sergeev", 1300);
         FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer("Vasilev", 1400);
@@ -25,7 +25,7 @@ class EmployeeTeamTest {
 
     @Test
     void remove() {
-        EmployeeTeam employeeTeam = new EmployeeTeam();
+        EmployeeTeam employeeTeam = new EmployeeTeam(5);
         QAEngineer qaEngineer = new QAEngineer("Pavlov", 1200);
         BackEndProgrammer backEndProgrammer = new BackEndProgrammer("Sergeev", 1300);
         FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer("Vasilev", 1400);

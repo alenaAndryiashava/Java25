@@ -6,9 +6,17 @@ import java.util.Arrays;
 // This class should have private field array of Employees and implements toString(),
 // add(Employee employee) method and remove(int index) method.
 public class EmployeeTeam {
-    private int capacity = 5;
+    private int capacity;
     private int currentIndex = 0;
     private Employee[] employees;
+
+    public EmployeeTeam(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public EmployeeTeam() {
+    }
+
 
     @Override
     public String toString() {
@@ -34,20 +42,37 @@ public class EmployeeTeam {
     }
 
     public void remove(int index) {
-        System.arraycopy(employees, index + 1, employees, index, capacity - 1 - index);
-        currentIndex--;
+        if (currentIndex > 0 && index <= currentIndex) {
+            System.arraycopy(employees, index + 1, employees, index, capacity - 1 - index);
+            currentIndex--;
+        }
+    }
+    public void remove(int index, boolean flag){
+        if (flag){
+            System.out.println("Remove element " + index);
+        }
     }
 
     public Employee[] getTeam() {
         return employees;
     }
     public int find(Employee employee) {
+        if (employee != null)
         for (int i = 0; i < currentIndex; i++) {
-            if (employees[i].equals(employee)) {
+            if (employees[i].hashCode() == employee.hashCode() &&
+            employees[i].equals(employee))
                 return i;
             }
-        }
        return -1;
+    }
+    public void remove (Employee employee){
+        int index = this.find(employee);
+        if(index!= -1){
+            this.remove(index);
+        }
+    }
+    public void remove (String str){
+
     }
 }
 

@@ -6,6 +6,8 @@ package com.company;
 // FrontEnd programmers should “Write code and Implement new features”.
 // The work of FullStack programmers not defined.
 
+import java.util.Arrays;
+
 //Add to Manager field team. It must contain an array of Employee.
 // You should not initialize it from constructor.
 // You should implement the method addEmployeeToTeam
@@ -53,6 +55,19 @@ public class Main {
 
         System.out.println(manager1.getTeam().find(backEndProgrammer));
         System.out.println(manager1.getTeam().find(qaEngineer2));
+
+
+        BackEndProgrammer backEndProgrammer1 = new BackEndProgrammer("Sergeev", 1300);
+        manager1.getTeam().remove(backEndProgrammer1);
+        System.out.println(manager1.getTeam());
+
+        EmployeeTeam team = new EmployeeTeam(10);
+        team.add(manager1);
+        team.add(backEndProgrammer);
+        team.add(qaEngineer1);
+        System.out.println(team);
+        team.remove(backEndProgrammer1);
+        System.out.println(team);
 
 
 
