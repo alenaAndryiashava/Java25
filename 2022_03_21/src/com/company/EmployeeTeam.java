@@ -112,8 +112,8 @@ public class EmployeeTeam {
     //Adding several employees to a team at a time (addAll).
     // As previous It should be possible to set the list by array or by EmployeeTeam
     public void addAll(Employee[] employees){
-        for (Employee employee : employees) {
-            add(employee);
+        for (int i = 0; i < employees.length; i++) {
+            add(employees[i]);
         }
     }
     //Since our EmployeeTeam allows null cells at the end of the array,
