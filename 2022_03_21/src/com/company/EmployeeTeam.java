@@ -6,7 +6,7 @@ import java.util.Arrays;
 // This class should have private field array of Employees and implements toString(),
 // add(Employee employee) method and remove(int index) method.
 public class EmployeeTeam {
-    private int capacity;
+    private int capacity =5;
     private int currentIndex = 0;
     private Employee[] employees;
 
@@ -65,13 +65,64 @@ public class EmployeeTeam {
             }
        return -1;
     }
+    public int findByName(String name) {
+            for (int i = 0; i < currentIndex; i++) {
+                if (employees[i].getName().equals(name))
+                    return i;
+            }
+        return -1;
+    }
+
     public void remove (Employee employee){
         int index = this.find(employee);
         if(index!= -1){
             this.remove(index);
         }
     }
-    public void remove (String str){
+    //The remove (String name) method that remove Employees by the name
+    public void remove (String name){
+        int index = findByName(name);
+        if(index == -1)
+            System.out.println("The employee " + name + " is not in the team.");
+        else
+            remove(index);
+    }
+    //The int size() method that returns how many Employees in the team
+    public int size(){
+        return currentIndex;
+    }
+    //The Employee get(int index) method that return
+    // the Employee with the given index
+
+    Employee get(int index){
+        if(index<0 || index>=capacity)
+            return null;
+
+        return employees[index];
+    }
+    //Removal of several employees from the team at once (removeAll)
+    // It should be possible to use an array of Employee
+    // or EmployeeTeam to set the list of removed workers
+
+    public void removeAll(Employee[] employees){
+        for (Employee employee : employees) {
+            remove(employee);
+        }
+    }
+    //Adding several employees to a team at a time (addAll).
+    // As previous It should be possible to set the list by array or by EmployeeTeam
+    public void addAll(Employee[] employees){
+        for (Employee employee : employees) {
+            add(employee);
+        }
+    }
+    //Since our EmployeeTeam allows null cells at the end of the array,
+    // it could take up extra memory. Implement the trimToSize() method that trims
+    // the capacity of the array to be the real current size.
+
+    public void trimToSize(){
+        this.employees = Arrays.copyOf(employees,currentIndex);
+        capacity = currentIndex;
 
     }
 }

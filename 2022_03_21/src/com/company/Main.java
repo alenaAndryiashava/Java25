@@ -6,8 +6,6 @@ package com.company;
 // FrontEnd programmers should “Write code and Implement new features”.
 // The work of FullStack programmers not defined.
 
-import java.util.Arrays;
-
 //Add to Manager field team. It must contain an array of Employee.
 // You should not initialize it from constructor.
 // You should implement the method addEmployeeToTeam
@@ -42,7 +40,7 @@ public class Main {
         }
 
          */
-        System.out.println("----Manager------");
+        System.out.println("----------");
         Manager manager1 = new Manager("SuperBoss", 5000, 1000);
 
         manager1.getTeam().add(manager1);
@@ -57,17 +55,35 @@ public class Main {
         System.out.println(manager1.getTeam().find(qaEngineer2));
 
 
+
+
         BackEndProgrammer backEndProgrammer1 = new BackEndProgrammer("Sergeev", 1300);
         manager1.getTeam().remove(backEndProgrammer1);
         System.out.println(manager1.getTeam());
 
-        EmployeeTeam team = new EmployeeTeam(10);
-        team.add(manager1);
-        team.add(backEndProgrammer);
-        team.add(qaEngineer1);
-        System.out.println(team);
-        team.remove(backEndProgrammer1);
-        System.out.println(team);
+        EmployeeTeam team1 = new EmployeeTeam(2);
+        team1.add(manager1);
+        team1.add(backEndProgrammer);
+        team1.add(qaEngineer1);
+        team1.add(fullStackProgrammer);
+        team1.add(frontEndProgrammer);
+        team1.add(backEndProgrammer1);
+        System.out.println(team1);
+        team1.remove(backEndProgrammer1);
+        System.out.println(team1);
+        System.out.println("In the team: " +team1.size() + " employees.");
+        System.out.println(team1.get(2));
+        System.out.println(team1.get(5));
+
+        team1.remove("Pavlov");
+        System.out.println(team1);
+        team1.remove("Maximov");
+        team1.removeAll(new Employee[]{frontEndProgrammer,fullStackProgrammer});
+        System.out.println(team1);
+        team1.addAll(new Employee[]{frontEndProgrammer,fullStackProgrammer});
+        System.out.println(team1);
+
+
 
 
 
