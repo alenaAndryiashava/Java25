@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class EmployeeTeam {
     private int capacity =5;
     private int currentIndex = 0;
-    private Employee[] employees;
+    private Employee[] team;
 
     public EmployeeTeam(int capacity) {
         this.capacity = capacity;
@@ -23,27 +23,27 @@ public class EmployeeTeam {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Team: \n");
         for (int i = 0; i < currentIndex; i++) {
-            stringBuilder.append(employees[i]).append("\n");
+            stringBuilder.append(team[i]).append("\n");
         }
 
         return stringBuilder.toString();
     }
 
     public void add(Employee employee) {
-        if (employees == null) {
-            employees = new Employee[capacity];
+        if (team == null) {
+            team = new Employee[capacity];
             currentIndex = 0;
         }
         if (currentIndex >= capacity) {
             capacity *= 2;
-            employees = Arrays.copyOf(employees, capacity);
+            team = Arrays.copyOf(team, capacity);
         }
-        employees[currentIndex++] = employee;
+        team[currentIndex++] = employee;
     }
 
     public void remove(int index) {
         if (currentIndex > 0 && index <= currentIndex) {
-            System.arraycopy(employees, index + 1, employees, index, capacity - 1 - index);
+            System.arraycopy(team, index + 1, team, index, capacity - 1 - index);
             currentIndex--;
         }
     }
@@ -54,20 +54,20 @@ public class EmployeeTeam {
     }
 
     public Employee[] getTeam() {
-        return employees;
+        return team;
     }
     public int find(Employee employee) {
         if (employee != null)
         for (int i = 0; i < currentIndex; i++) {
-            if (employees[i].hashCode() == employee.hashCode() &&
-            employees[i].equals(employee))
+            if (team[i].hashCode() == employee.hashCode() &&
+            team[i].equals(employee))
                 return i;
             }
        return -1;
     }
     public int findByName(String name) {
             for (int i = 0; i < currentIndex; i++) {
-                if (employees[i].getName().equals(name))
+                if (team[i].getName().equals(name))
                     return i;
             }
         return -1;
@@ -79,7 +79,7 @@ public class EmployeeTeam {
             this.remove(index);
         }
     }
-    //The remove (String name) method that remove Employees by the name
+    //3. The remove (String name) method that remove Employees by the name
     public void remove (String name){
         int index = findByName(name);
         if(index == -1)
@@ -87,43 +87,119 @@ public class EmployeeTeam {
         else
             remove(index);
     }
-    //The int size() method that returns how many Employees in the team
+    //1. The int size() method that returns how many Employees in the team
     public int size(){
         return currentIndex;
     }
-    //The Employee get(int index) method that return
+    //2. The Employee get(int index) method that return
     // the Employee with the given index
 
-    Employee get(int index){
-        if(index<0 || index>=capacity)
+    public Employee get(int index){
+        if(index<0 || index >= currentIndex)
             return null;
 
-        return employees[index];
+        return team[index];
     }
-    //Removal of several employees from the team at once (removeAll)
+    //4. Removal of several employees from the team at once (removeAll)
     // It should be possible to use an array of Employee
     // or EmployeeTeam to set the list of removed workers
 
-    public void removeAll(Employee[] employees){
-        for (Employee employee : employees) {
-            remove(employee);
-        }
-    }
-    //Adding several employees to a team at a time (addAll).
-    // As previous It should be possible to set the list by array or by EmployeeTeam
-    public void addAll(Employee[] employees){
+    public boolean removeAll(Employee[] employees) {
+        if (employees == null) return false;
+        int size = size();
         for (int i = 0; i < employees.length; i++) {
-            add(employees[i]);
+            if (employees[i] != null) {
+                remove(employees[i]);
+            }
+        }
+        return size != size();
+    }
+
+    public boolean removeAll(EmployeeTeam employees) {
+        if (employees == null) return false;
+        int size = size();
+        for (int i = 0; i < employees.size(); i++) {
+            Employee employee = get(i);
+                if(employee!=null){
+                    remove(employee);
+            }
+        }
+        return size != size();
+    }
+
+
+    //5. Adding several employees to a team at a time (addAll).
+    // As previous It should be possible to set the list by array or by EmployeeTeam
+    public boolean addAll(Employee[] employees) {
+        if (employees == null) return false;
+        int size = size();
+        int newCapacity = currentIndex + employees.length+10;
+        if (newCapacity<capacity){
+            increaseToSize(newCapacity);
+        }
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] != null) {
+                add(employees[i]);
+            }
+        }
+        return size != size();
+    }
+
+    public boolean addAll(EmployeeTeam employees) {
+        if (employees != null) {
+            return addAll(employees.getTeam());
+        } else {
+            return false;
         }
     }
-    //Since our EmployeeTeam allows null cells at the end of the array,
+
+    private void increaseToSize(int newCapacity){
+        if(newCapacity>capacity){
+            team = Arrays.copyOf(team,newCapacity);
+            capacity = newCapacity;
+        }
+    }
+    // 6. Since our EmployeeTeam allows null cells at the end of the array,
     // it could take up extra memory. Implement the trimToSize() method that trims
     // the capacity of the array to be the real current size.
 
     public void trimToSize(){
-        this.employees = Arrays.copyOf(employees,currentIndex);
-        capacity = currentIndex;
-
+        if(capacity>currentIndex) {
+            this.team = Arrays.copyOf(team, currentIndex);
+            capacity = currentIndex;
+        }
     }
+
+    //7. The method that returns the new EmployeeTeam with all
+    // employees with the given name from this team .
+
+    public EmployeeTeam findAllByName(String name){
+        EmployeeTeam employeeTeam = new EmployeeTeam();
+        if (name==null) return employeeTeam;
+        for (int i = 0; i < currentIndex; i++) {
+            if(team[i].getName().equals(name)){
+                employeeTeam.add(team[i]);
+            }
+        }
+        return employeeTeam;
+    }
+
+    // Implement the method that returns the EmployeeTeam with all programmers
+    // or all QA Engineers from this team
+
+    public EmployeeTeam findAllBySpeciality (String name) {
+        EmployeeTeam employeeTeam = new EmployeeTeam();
+        if (name == null) return employeeTeam;
+        for (int i = 0; i < currentIndex; i++) {
+            switch (name) {
+                case "programmer":
+                    if (team[i] instanceof Programmer) add(team[i]);
+                case "qa":
+                    if (team[i] instanceof QAEngineer) add(team[i]);
+            }
+        }
+        return employeeTeam;
+    }
+
 }
 
