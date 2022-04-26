@@ -30,16 +30,7 @@ public class Main {
             intern.qwe();
         }
 
-        /*
-        manager.addEmployeeToTeam(backEndProgrammer);
-        manager.addEmployeeToTeam(frontEndProgrammer);
-        manager.addEmployeeToTeam(fullStackProgrammer);
-        System.out.println("Team:");
-        for (Employee employee : manager.getTeam()) {
-            System.out.println(employee);
-        }
 
-         */
         System.out.println("----------");
         Manager manager1 = new Manager("SuperBoss", 5000, 1000);
 
