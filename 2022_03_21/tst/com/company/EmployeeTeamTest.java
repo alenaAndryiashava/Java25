@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTeamTest {
-
-
         EmployeeTeam employeeTeam = new EmployeeTeam(5);
         QAEngineer qaEngineer = new QAEngineer("Pavlov", 1200);
         BackEndProgrammer backEndProgrammer = new BackEndProgrammer("Sergeev", 1300);
@@ -48,6 +46,19 @@ class EmployeeTeamTest {
 
         employeeTeam.trimToSize();
         Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer};
+        Employee[] actual = employeeTeam.getTeam();
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void sortByName() {
+        employeeTeam.add(frontEndProgrammer);//Vasilev
+        employeeTeam.add(qaEngineer);//Pavlov
+        employeeTeam.add(backEndProgrammer);//Sergeev
+
+        Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer, null, null};
+        employeeTeam.sortByName();
         Employee[] actual = employeeTeam.getTeam();
 
         assertArrayEquals(expected, actual);

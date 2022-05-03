@@ -1,6 +1,9 @@
 package com.company;
-
-public abstract class Employee {
+//6. In the Employee you need to implement new feature assign a Task(id, status, description)
+// to each Employee. Think how you can implement it.
+// NOTE each employee can solve more than one task,
+// and each task can be solved by more than one employee.
+public abstract class Employee implements Comparable<Employee>{
     private String name;
     private double salary;
 
@@ -57,5 +60,10 @@ public abstract class Employee {
         temp = Double.doubleToLongBits(salary);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public int compareTo(Employee other) {
+        return getName().compareTo(other.getName());
     }
 }

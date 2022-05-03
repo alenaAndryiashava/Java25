@@ -17,7 +17,6 @@ public class EmployeeTeam {
     public EmployeeTeam() {
     }
 
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -56,6 +55,7 @@ public class EmployeeTeam {
     public Employee[] getTeam() {
         return team;
     }
+
     public int find(Employee employee) {
         if (employee != null)
         for (int i = 0; i < currentIndex; i++) {
@@ -65,6 +65,7 @@ public class EmployeeTeam {
             }
        return -1;
     }
+
     public int findByName(String name) {
             for (int i = 0; i < currentIndex; i++) {
                 if (team[i].getName().equals(name))
@@ -201,5 +202,10 @@ public class EmployeeTeam {
         return employeeTeam;
     }
 
+    //Add to the EmployeeTeam the ability to sort employees by name.
+    // Use the Comparable and Arrays.sort
+    public void sortByName() {
+        Arrays.sort(team, 0, currentIndex);
+    }
 }
 
