@@ -6,10 +6,16 @@ package com.company;
 public abstract class Employee implements Comparable<Employee>{
     private String name;
     private double salary;
+    private int id;
 
-    public Employee(String name, double salary) {
+    public Employee(int id,String name, double salary) {
+        this.id = id;
         this.name = name;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

@@ -2,8 +2,8 @@ package com.company;
 
 public class QAEngineer extends Employee{
 
-    public QAEngineer(String name, double salary) {
-        super(name, salary);
+    public QAEngineer(int id, String name, double salary) {
+        super(id, name, salary);
     }
 
     @Override

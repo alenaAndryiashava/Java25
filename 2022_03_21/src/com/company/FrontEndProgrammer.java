@@ -2,8 +2,8 @@ package com.company;
 
 public class FrontEndProgrammer extends Programmer{
 
-    public FrontEndProgrammer(String name, double salary) {
-        super(name, salary);
+    public FrontEndProgrammer(int id, String name, double salary) {
+        super(id, name, salary);
     }
     @Override
     public String toString() {

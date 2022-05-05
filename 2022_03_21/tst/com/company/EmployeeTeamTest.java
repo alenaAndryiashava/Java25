@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTeamTest {
         EmployeeTeam employeeTeam = new EmployeeTeam(5);
-        QAEngineer qaEngineer = new QAEngineer("Pavlov", 1200);
-        BackEndProgrammer backEndProgrammer = new BackEndProgrammer("Sergeev", 1300);
-        FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer("Vasilev", 1400);
+        QAEngineer qaEngineer = new QAEngineer(1,"Pavlov", 1200);
+        BackEndProgrammer backEndProgrammer = new BackEndProgrammer(2,"Sergeev", 1300);
+        FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer(3,"Vasilev", 1400);
 
     @Test
     void add() {
@@ -17,7 +17,7 @@ class EmployeeTeamTest {
         employeeTeam.add(backEndProgrammer);
         employeeTeam.add(frontEndProgrammer);
 
-        Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer, null, null};
+        Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer};
         Employee[] actual = employeeTeam.getTeam();
 
         assertArrayEquals(expected, actual);
@@ -32,7 +32,7 @@ class EmployeeTeamTest {
         employeeTeam.remove(0);
         System.out.println(employeeTeam);
 
-        Employee[] expected = {backEndProgrammer, frontEndProgrammer, null, null, null};
+        Employee[] expected = {backEndProgrammer, frontEndProgrammer};
         Employee[] actual = employeeTeam.getTeam();
 
         assertArrayEquals(expected, actual);
@@ -57,10 +57,19 @@ class EmployeeTeamTest {
         employeeTeam.add(qaEngineer);//Pavlov
         employeeTeam.add(backEndProgrammer);//Sergeev
 
-        Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer, null, null};
-        employeeTeam.sortByName();
-        Employee[] actual = employeeTeam.getTeam();
+        Employee[] expected = {qaEngineer, backEndProgrammer, frontEndProgrammer};
+        Employee[] actual = employeeTeam.sortByName();
 
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void getTeam() {
+        employeeTeam.add(frontEndProgrammer);
+        employeeTeam.add(qaEngineer);
+        employeeTeam.add(backEndProgrammer);
+        Employee[] expected = {frontEndProgrammer,qaEngineer, backEndProgrammer};
+        Employee[] actual = employeeTeam.getTeam();
         assertArrayEquals(expected, actual);
     }
 }

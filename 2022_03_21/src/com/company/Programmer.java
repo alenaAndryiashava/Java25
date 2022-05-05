@@ -2,8 +2,8 @@ package com.company;
 
 public abstract class Programmer extends Employee{
 
-    public Programmer(String name,double salary) {
-        super(name, salary);
+    public Programmer(int id,String name,double salary) {
+        super(id,name, salary);
     }
 
     @Override

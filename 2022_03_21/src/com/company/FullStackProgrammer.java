@@ -1,8 +1,8 @@
 package com.company;
 
 public class FullStackProgrammer extends Programmer{
-    public FullStackProgrammer(String name, double salary) {
-        super(name, salary);
+    public FullStackProgrammer(int id, String name, double salary) {
+        super(id, name, salary);
     }
 
     @Override

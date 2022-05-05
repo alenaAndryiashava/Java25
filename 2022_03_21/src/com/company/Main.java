@@ -13,13 +13,13 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        QAEngineer qaEngineer1 = new QAEngineer("Pavlov", 1200);
-        QAEngineer qaEngineer2 = new QAEngineer("Maximov", 1100);
-        Intern intern = new Intern("Aleksov", 200);
-        Manager manager = new Manager("Nemov", 1900, 200);
-        BackEndProgrammer backEndProgrammer = new BackEndProgrammer("Sergeev", 1300);
-        FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer("Vasilev", 1400);
-        FullStackProgrammer fullStackProgrammer = new FullStackProgrammer("Borisov", 1300);
+        QAEngineer qaEngineer1 = new QAEngineer(1,"Pavlov", 1200);
+        QAEngineer qaEngineer2 = new QAEngineer(2,"Maximov", 1100);
+        Intern intern = new Intern(3,"Aleksov", 200);
+        Manager manager = new Manager(4,"Nemov", 1900, 200);
+        BackEndProgrammer backEndProgrammer = new BackEndProgrammer(5,"Sergeev", 1300);
+        FrontEndProgrammer frontEndProgrammer = new FrontEndProgrammer(6,"Vasilev", 1400);
+        FullStackProgrammer fullStackProgrammer = new FullStackProgrammer(7,"Borisov", 1300);
 
 
         Employee[] employees = {manager, qaEngineer1, qaEngineer2, intern};
@@ -32,7 +32,7 @@ public class Main {
 
 
         System.out.println("----------");
-        Manager manager1 = new Manager("SuperBoss", 5000, 1000);
+        Manager manager1 = new Manager(8,"SuperBoss", 5000, 1000);
 
         manager1.getTeam().add(manager1);
         manager1.getTeam().add(qaEngineer1);
@@ -48,7 +48,7 @@ public class Main {
 
 
 
-        BackEndProgrammer backEndProgrammer1 = new BackEndProgrammer("Sergeev", 1300);
+        BackEndProgrammer backEndProgrammer1 = new BackEndProgrammer(9,"Sergeev", 1300);
         manager1.getTeam().remove(backEndProgrammer1);
         System.out.println(manager1.getTeam());
 
@@ -72,6 +72,8 @@ public class Main {
         team1.removeAll(new Employee[]{frontEndProgrammer,fullStackProgrammer});
         System.out.println(team1);
         team1.addAll(new Employee[]{frontEndProgrammer,fullStackProgrammer});
+        System.out.println(team1);
+        team1.sortByName();
         System.out.println(team1);
 
 

@@ -9,8 +9,8 @@ public class Manager extends Employee{
     private final EmployeeTeam employeeTeam;
     private final double bonus;
 
-    public Manager(String name, double salary, double bonus){
-        super(name,salary);
+    public Manager(int id, String name, double salary, double bonus){
+        super(id, name,salary);
         this.employeeTeam = new EmployeeTeam();
         this.bonus = bonus;
     }

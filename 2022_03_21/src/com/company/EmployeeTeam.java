@@ -5,10 +5,12 @@ import java.util.Arrays;
 //Let’s create new class EmployeeTeam that should handle the array of Employees.
 // This class should have private field array of Employees and implements toString(),
 // add(Employee employee) method and remove(int index) method.
+
 public class EmployeeTeam {
     private int capacity =5;
     private int currentIndex = 0;
     private Employee[] team;
+
 
     public EmployeeTeam(int capacity) {
         this.capacity = capacity;
@@ -53,7 +55,8 @@ public class EmployeeTeam {
     }
 
     public Employee[] getTeam() {
-        return team;
+        return Arrays.copyOfRange(team,0,currentIndex);
+         
     }
 
     public int find(Employee employee) {
@@ -204,8 +207,10 @@ public class EmployeeTeam {
 
     //Add to the EmployeeTeam the ability to sort employees by name.
     // Use the Comparable and Arrays.sort
-    public void sortByName() {
-        Arrays.sort(team, 0, currentIndex);
+    public Employee[] sortByName() {
+        Employee[] sortTeam = getTeam();
+        Arrays.sort(sortTeam);
+        return sortTeam;
     }
 }
 
