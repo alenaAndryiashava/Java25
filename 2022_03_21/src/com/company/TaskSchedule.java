@@ -21,8 +21,7 @@ public class TaskSchedule {
     }
 
     public void assign(int employeeId, int taskId) {
-        int index = search(employeeId, taskId);
-        if (index == -1) {
+        if (!isAssigned(employeeId,taskId)) {
             assignedTasks.add(new AssignedTask(employeeId, taskId));
         }
     }
