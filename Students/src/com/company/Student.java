@@ -1,6 +1,6 @@
 package com.company;
 
-public class Student {
+public class Student implements TaskObserver{
     private String name;
     private int yearOfBirthday;
     private double gpa;
@@ -29,5 +29,10 @@ public class Student {
 
     public double getGpa() {
         return gpa;
+    }
+
+    @Override
+    public void handleEvent(Task task) {
+        System.out.println("Ok. Task is in progress.");
     }
 }
