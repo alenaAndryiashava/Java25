@@ -1,18 +1,20 @@
 package com.company;
 
 public class Teacher implements TaskObserver{
-    private static Teacher INSTANCE;
+    //private static Teacher INSTANCE;
     String name;
 
     public Teacher(String name) {
         this.name = name;
     }
-    public static Teacher getInstance(String name){
+    /*public static Teacher getInstance(String name){
         if(INSTANCE==null){
             INSTANCE=new Teacher(name);
         }
         return INSTANCE;
     }
+
+     */
 
     @Override
     public String toString() {
